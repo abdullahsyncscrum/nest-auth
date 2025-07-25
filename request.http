@@ -1,7 +1,8 @@
 ### Get all users
-GET http://localhost:8080/auth
+GET http://localhost:8080/auth/all
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImcuZG5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUzMzM5OTc2LCJleHAiOjE3NTM0MjYzNzZ9.Ryd6kfp8BHpgbG1Wrv6VhwYB7INwe6WnaMq1uWewEKM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoibWFpbC5kbmVAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTM0NzA1OTYsImV4cCI6MTc1MzU1Njk5Nn0.yCdhyQ9hlvXTai8sbhUrOjjlsVdR0coDf_T6I99D2Uw
+
 
 
 ### Create a new user
