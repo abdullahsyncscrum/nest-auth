@@ -1,0 +1,43 @@
+### Get all users
+GET http://localhost:8080/auth
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImcuZG5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUzMzM5OTc2LCJleHAiOjE3NTM0MjYzNzZ9.Ryd6kfp8BHpgbG1Wrv6VhwYB7INwe6WnaMq1uWewEKM
+
+
+### Create a new user
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "password": "@J1ohndoeW2@@E",
+  "name": "@J1ohndoe",
+  "email": "mail.dne@example.com"
+}
+
+
+
+### Sign in
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "password": "@J1ohndoe",
+  "email": "mail.dne@example.com"
+}
+
+
+### Reset password
+PATCH http://localhost:8080/auth/update-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoibWFpbC5kbmVAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTM0NTM5OTYsImV4cCI6MTc1MzU0MDM5Nn0.mTBpySxLLmSjj8dqKyZKMN-Au30Y96IIhUl1jAcSNWA
+
+{
+  "oldPassword": "@J1ohndoe",
+  "newPassword": "@J1ohndoe1"
+}
+
+
+### Logout
+GET http://localhost:8080/auth/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoibWFpbC5kbmVAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTM0NTM5OTYsImV4cCI6MTc1MzU0MDM5Nn0.mTBpySxLLmSjj8dqKyZKMN-Au30Y96IIhUl1jAcSNWA
