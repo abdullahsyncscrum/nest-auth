@@ -51,4 +51,9 @@ export class AuthController {
   logout(@Req() req) {
     return this.authService.logout(req.email);
   }
+
+  @Get('/dummy')
+  dummyEndpoint() {
+    return { status: 'ok', message: 'Dummy endpoint for testing' };
+  }
 }
