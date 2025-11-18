@@ -1,0 +1,86 @@
+language: "typescript"
+
+review:
+  enabled: true
+  auto_review: true
+  auto_review_on:
+    - pull_request_opened
+    - pull_request_synchronize   
+  path_filters:
+    include:
+      - "src/**/*.ts"
+      - "test/**/*.ts"
+    exclude:
+      - "dist/**"
+      - "node_modules/**"
+
+  # How strict and detailed you want it to be
+  style: "balanced"  # options often like: minimal, balanced, thorough
+  summary: true
+  inline_comments: true
+  max_comments: 50
+
+instructions:
+  general: |
+    You are reviewing a NestJS (Node.js/TypeScript) backend project.
+    Follow NestJS and TypeScript best practices.
+    Be concise. Focus on correctness, security, performance and maintainability.
+    Avoid nitpicks on formatting if the code follows the existing style.
+
+  architecture: |
+    - Encourage the use of NestJS modules, providers, and controllers correctly.
+    - Ensure controllers stay thin and delegate business logic to services.
+    - Suggest splitting large services into smaller ones when they become too big.
+    - Make sure dependencies are injected via NestJS dependency injection, not manually instantiated.
+
+  security: |
+    - Check for any unvalidated input in controllers or DTOs.
+    - Ensure that any route that should be protected uses proper guards (e.g., AuthGuard, RolesGuard).
+    - Watch for potential SQL injection or NoSQL injection issues when building queries.
+    - Ensure secrets and API keys are not hard-coded; they should come from environment variables.
+
+  testing: |
+    - Encourage unit tests for services and e2e tests for controllers when logic is complex.
+    - For any bug fix, suggest adding a regression test.
+    - In NestJS, prefer using TestingModule from @nestjs/testing.
+
+  style_and_quality: |
+    - Prefer async/await over raw Promises where it improves readability.
+    - Ensure DTOs use class-validator decorators (@IsString, @IsInt, @IsOptional, etc).
+    - Encourage proper use of interfaces and types, avoiding any when possible.
+    - Point out unreachable or dead code and large functions that can be refactored.
+
+  pull_request_comments: |
+    - Start with a short summary of the PR in plain language.
+    - Then list the most important 3–5 issues or suggestions.
+    - For minor nits, group them together instead of many separate comments.
+
+# Optional: adjust behavior for small vs large PRs
+thresholds:
+  small_pr_changed_lines: 50
+  large_pr_changed_lines: 500
+
+
+
+  nestjs_best_practices: |
+    - Controllers:
+      - Should only contain request/response handling and very light logic.
+      - Must delegate business logic to services.
+    - Services:
+      - Should be injectable providers (@Injectable()) and handle most of the logic.
+      - Avoid static utility classes if DI fits better.
+    - DTOs:
+      - Use class-validator and class-transformer decorators.
+      - Make sure exposed properties are clearly defined, avoid using any.
+    - Modules:
+      - Keep modules cohesive (e.g., UserModule, AuthModule).
+      - Do not put unrelated providers into the same module.
+      - Export only what other modules really need.
+    - Error handling:
+      - Prefer NestJS HTTP exceptions (e.g., BadRequestException, NotFoundException).
+      - Avoid returning raw error strings; use proper HTTP status and message.
+    - Logging:
+      - Use NestJS Logger or a centralized logger instead of console.log in production code.
+    - Config:
+      - Use @nestjs/config and environment variables instead of hard-coding values.
+
