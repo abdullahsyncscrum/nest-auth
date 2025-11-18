@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+language: "en-US"
+early_access: false
+
+tone_instructions: >
+  You are an expert NestJS and TypeScript backend code reviewer.
+  Be concise and focus on correctness, security, and clean architecture.
+
+reviews:
+  profile: "balanced"          # "chill", "balanced", or "thorough"
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: true
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches: ["main"]    # run on PRs targeting main
+
+  path_instructions:
+    - path: "src/**/*.ts"
+      instructions: |
+        This is a NestJS backend project.
+        - Controllers should be thin and delegate to services.
+        - Services should use dependency injection (@Injectable()).
+        - Use DTOs with class-validator for all request bodies.
+        - Use proper NestJS HTTP exceptions (BadRequestException, NotFoundException, etc.).
+        - Avoid any where possible; use proper TypeScript types.
+        - Check for auth/guard usage on protected routes.
+
+chat:
+  auto_reply: true

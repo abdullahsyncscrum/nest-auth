@@ -42,3 +42,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtY
 GET http://localhost:8080/auth/logout
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoibWFpbC5kbmVAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTM0NTM5OTYsImV4cCI6MTc1MzU0MDM5Nn0.mTBpySxLLmSjj8dqKyZKMN-Au30Y96IIhUl1jAcSNWA
+
+
+### Dummy endpoint
+GET http://localhost:8080/auth/dummy
+Content-Type: application/json

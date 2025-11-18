@@ -110,6 +110,20 @@ Clears the persisted JWT token for the current user and responds with:
 Send the same `Authorization: Bearer <token>` header used for other protected
 routes so the backend can determine which user to log out.
 
+### Dummy Endpoint — `GET /auth/dummy`
+
+Health-check style route that returns a static payload confirming that the
+service is reachable.
+
+```json
+{
+  "status": "ok",
+  "message": "Dummy endpoint for testing"
+}
+```
+
+Useful for smoke tests or verifying that routing and deployments are working.
+
 ## Error Handling
 
 All errors use standard NestJS HTTP responses. Common scenarios include:
